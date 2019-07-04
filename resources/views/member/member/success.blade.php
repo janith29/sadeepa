@@ -18,7 +18,7 @@
                         <p>Success done Member</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="{{ route('patient.member') }}" class="btn btn-primary">Ok</a>
+                        <a href="{{ route('member.member') }}" class="btn btn-primary">Ok</a>
                     </div>
                 </div>
             </div>

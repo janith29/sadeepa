@@ -24,7 +24,7 @@ class UsersSeeder extends Seeder
         $users = [
             [
                 'name' => 'Admin',
-                'email' => 'admin.laravel@labs64.com',
+                'email' => 'admin.noyonlanka@labs.com',
                 'password' => bcrypt('894564124'),
                 'active' => true,
                 'confirmation_code' => \Ramsey\Uuid\Uuid::uuid4(),
@@ -33,35 +33,25 @@ class UsersSeeder extends Seeder
                 'updated_at' => Carbon::now(),
                 'usertype' => 'administrator'
              ]
-            ,
-             [
-                'name' => 'Admin2',
-                'email' => 'sdd@labs64.com',
-                'password' => bcrypt('894564123'),
-                'active' => true,
-                'confirmation_code' => \Ramsey\Uuid\Uuid::uuid4(),
-                'confirmed' => true,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-                'usertype' => 'administrator'
-             ]
-            ,
-            
-            [
-                'name' => 'Demo',
-                'email' => 'demo.laravel@labs64.com',
-                'password' => bcrypt('demo'),
-                'active' => true,
-                'confirmation_code' => \Ramsey\Uuid\Uuid::uuid4(),
-                'confirmed' => true,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-                'usertype' => 'receptionist'
-            ]
+           
+           
         ];
 
         DB::table('users')->insert($users);
 
-       
+        $member = [
+            [
+                'name' => 'Admin',
+                'nic' => '894564124',
+                'mbr_pic' => '1member.jpeg',
+                'contact' => '071134565',
+                'email' => 'admin.noyonlanka@labs.com',
+                'birthday' => '1986-06-05',
+                'address' => 'Biyagama,sri lanka'
+        ]
+           
+    ];
+    DB::table('member')->insert($member);
+
     }
 }

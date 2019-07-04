@@ -30,12 +30,10 @@ class DashboardControllerv extends Controller
      */
     public function index()
     {
-        
         $counts = [
-            'book' => \DB::table('book')->count(),
-            'book_author' => \DB::table('book_author')->count(),
+            'delivered' => \DB::table('delivered')->count(),
+            'inverty' => \DB::table('inverty')->count(),
             'member' => \DB::table('member')->count(),
-            'online_library' => \DB::table('online_library')->count(),
             'users_unconfirmed' => \DB::table('users')->where('confirmed', false)->count(),
             'users_inactive' => \DB::table('users')->where('active', false)->count(),
             'protected_pages' => 0

@@ -48,6 +48,38 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function logint(Request $request)
+    {
+        $Email = $request->get('Email');
+        $users = DB::select('select * from users where email ="'.$request['email'].'"');
+        $password=null;
+        foreach($users as $user)
+        {
+            $password=$user->password;
+        }
+        $members = DB::select('select * from member where email ="'.$request['email'].'"');
+        $nic=null;
+
+        foreach($members as $member)
+        {
+            $nic=$member->nic;
+        }
+
+        if (Hash::check($nic, $password))
+        {
+            // The passwords match...
+           
+           if (Hash::check($request['password'], $password))
+            {
+                return view('auth.reset1',compact('request'));
+            }
+
+        }
+        
+        
+        return $this->login($request);
+    }
+
     public function logout(Request $request)
     {
         $this->guard()->logout();
@@ -89,6 +121,18 @@ class LoginController extends Controller
 
         $password=$request->get('pass');
         $Cpassword=$request->get('Cpass');
+        $nic=null;
+        $members =DB::select("select * from member WHERE `member`.`email` = '".$resets->Email."'");
+        foreach($members as $member)
+        {
+            $nic= $member->nic;
+        }
+    
+        if (Hash::check($password, $nic))
+        {
+            $message = "Cann't Use NIC";
+            return view('auth.setpass',compact('resets'))->with('message', $message);
+        }
         $userpass=null;
         $users =DB::select("select * from users WHERE `users`.`email` = '".$resets->Email."'");
         foreach($users as $user)
@@ -97,7 +141,7 @@ class LoginController extends Controller
         }
         if (Hash::check($password, $userpass))
           {
-            $message = "Cann't Use NIC";
+            $message = "Cann't Use before use password";
             return view('auth.setpass',compact('resets'))->with('message', $message);
         }
         if($password!=$Cpassword)
@@ -124,7 +168,7 @@ class LoginController extends Controller
         DB::table('users')
             ->where('email', $resets->Email)
             ->update(['password' => bcrypt($request->get('pass'))]);
-        return redirect()->route('login');;
+        return redirect()->route('/');;
     }
     public function reset1()
     {

@@ -73,9 +73,9 @@
                                 @endif
                                 <div class="form-group">
                                     <label for="Email">Youre Email</label>
-                                    <h2> @foreach($users as $user)
-                                        {{ $emailu=$user->email}}
-                                         @endforeach</h2>
+                                    <h2> 
+                                        {{ $request['email']}}
+                                         </h2>
                                  </div>
                                 <div class="form-group">
                                     <label for="Qt1">Question 1</label>
@@ -116,7 +116,7 @@
                                                 <label for="inputAddress">Answer for Question 3</label>
                                                 <input type="text" name="ANS3" class="form-control" id="ANS3"  required>
                                              </div>
-                                             <input type="hidden" id="Email" name="Email" value="{{$emailu}}">
+                                             <input type="hidden" id="Email" name="Email" value="{{$request['email']}}">
                                  <button type="submit" class="btn btn-primary">Add</button>
                               </form>
                             </div>

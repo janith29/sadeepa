@@ -7,6 +7,9 @@
         <form action="addmember" method="post" enctype="multipart/form-data">
 
             {{ csrf_field() }}
+            @if(Session::has('message'))
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
+            @endif
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -30,6 +33,14 @@
             <div class="form-group">
                 <label for="inputAddress">Nic (without 'V')</label>
                 <input type="text" name="nic" class="form-control" id="inputAddress" value="{{ old('nic') }}" placeholder="xxxxxxxxxx ">
+            </div>
+            <div class="form-group">
+                <label for="User_Type">User Type *</label>
+                <select name="User_Type" class="form-control" >
+                    <option  disabled>Select one</option>
+                    <option  value="admin">Adminisraor</option>
+                    <option  value="other">Other</option>
+                </select>
             </div>
             <div class="container">
                 <div class="form-group">

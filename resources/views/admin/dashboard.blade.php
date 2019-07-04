@@ -7,10 +7,10 @@
     use Illuminate\Support\Facades\DB;
 
     $counts = [
-            'book' => \DB::table('book')->count(),
-            'book_author' => \DB::table('book_author')->count(),
+            'delivered' => \DB::table('delivered')->count(),
+            'inverty' => \DB::table('inverty')->count(),
             'member' => \DB::table('member')->count(),
-            'online_library' => \DB::table('online_library')->count(),
+            
             'users_unconfirmed' => \DB::table('users')->where('confirmed', false)->count(),
             'users_inactive' => \DB::table('users')->where('active', false)->count(),
             'protected_pages' => 0
@@ -22,18 +22,15 @@
             <span class="count_top"><i class="fa fa-users"></i>Total Mambers</span>
             <div class="count green">{{ $counts['member'] }}</div>
         </div>
+        
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fas fa-file-pdf-o"></i>Total Online book</span>
-            <div class="count green">{{ $counts['online_library'] }}</div>
+            <span class="count_top"><i class="fas fa-object-group"></i>Total Inverty</span>
+            <div class="count green">{{ $counts['inverty'] }}</div>
         </div>
         <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fas fa-book"></i>Total Book</span>
-            <div class="count green">{{ $counts['book'] }}</div>
-        </div>
-        <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fas fa-pen-nib "></i>Author</span>
+            <span class="count_top"><i class="fas fa-shopping-cart"></i>Total Delivered</span>
             <div>
-                <span class="count green">{{  $counts['book_author'] }}</span>
+                <span class="count green">{{  $counts['delivered'] }}</span>
             </div>
         </div>
         
@@ -46,7 +43,7 @@
             <div class="x_panel">
                 <div class="row x_title">
                     <div class="col-md-6">
-                        <h3> ARD book renting Management System
+                        <h3> Noyon Lanka Inverty Management System
                         </h3>
                     </div>
                 </div>
@@ -69,15 +66,15 @@
                       <!-- Wrapper for slides -->
                       <div class="carousel-inner">
                         <div class="item active">
-                          <img src="https://cdn-images-1.medium.com/max/1600/0*Ugp4QQOB6XvJwi-L" alt="Los Angeles" width="1800px" height="800px">
+                          <img src="img/fabrics-details6.jpg" alt="Los Angeles" width="1800px" height="800px">
                         </div>
                   
                         <div class="item">
-                          <img src="https://focusonbelgium.be/sites/default/files/styles/big_article_image/public/ku_leuven_rob_stevens_1.jpg?itok=ccpdnhlx" alt="Chicago" width="1800px" height="800px">
+                          <img src="img/fabrics-details4.jpg" width="1800px" height="800px">
                         </div>
                       
                         <div class="item">
-                          <img src="https://aatvos.com/wp-content/uploads/2018/10/Aatvos_Koln-Kalk_library-social-inclusion-1.jpg" alt="New york" width="1800px" height="800px">
+                          <img src="img/fabrics-details5.jpg" alt="New york" width="1800px" height="800px">
                         </div>
                       </div>
                   

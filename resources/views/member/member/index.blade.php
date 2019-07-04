@@ -1,5 +1,5 @@
 @extends('member.layouts.member')
-@section('title', "Book Management")
+@section('title', "Member Management")
 
 @section('content')
     <div class="row">
@@ -78,7 +78,7 @@
             </tr>
             </tbody>
         </table>
-        <a class="btn btn-info" href="{{ route('patient.member.edit',[$id]) }}">Edit my details</a>
+        <a class="btn btn-info" href="{{ route('member.member.edit',[$id]) }}">Edit my details</a>
     </div>
     <script>
             // Get the modal

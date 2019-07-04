@@ -54,7 +54,16 @@ class MemberController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request,Member $Member)
-    {Validator::extend('olderThan', function($attribute, $value, $parameters)
+    {
+
+        $Have = DB::table('member')->where('email', $request->get('email'))->get();
+        
+        if(!$Have->isEmpty())
+        { 
+            $message = 'This email has a early account';
+            return redirect()->intended(route('admin.member.add'))->with('message', $message);
+        }
+        Validator::extend('olderThan', function($attribute, $value, $parameters)
         {
             $minAge = ( ! empty($parameters)) ? (int) $parameters[0] : 18;
             return (new DateTime)->diff(new DateTime($value))->y >= $minAge;
@@ -110,19 +119,37 @@ class MemberController extends Controller
         $Member->address=$request->get('address');
         $Member->save();
 
+        if($request->get('User_Type')=="admin")
+        {
         $user = User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('nic')),
             'confirmation_code' => Uuid::uuid4(),
             'confirmed' => true,
-            'usertype' => 'Patient'
+            'usertype' => 'administrator'
             ]);
 
             // assign the role to a user role.
-            $role = Role::findOrFail(2);
+            $role = Role::findOrFail(1);
             $user->roles()->attach($role);
         return view('admin.member.success');
+        }
+        else if($request->get('User_Type')=="other"){
+            $user = User::create([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'password' => bcrypt($request->get('nic')),
+                'confirmation_code' => Uuid::uuid4(),
+                'confirmed' => true,
+                'usertype' => 'Patient'
+                ]);
+    
+                // assign the role to a user role.
+                $role = Role::findOrFail(2);
+                $user->roles()->attach($role);
+            return view('admin.member.success');
+        }
     }
 
     /**

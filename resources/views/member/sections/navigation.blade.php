@@ -1,8 +1,9 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="{{ route('patient.dashboard') }}" class="site_title">
-                <span>Artificial limb care </span>
+            <a href="{{ route('member.dashboard') }}" class="site_title">
+                
+                    <span>{{ config('app.name') }}</span>
             </a>
         </div>
 
@@ -27,7 +28,7 @@
             </div>
             <div class="profile_info">
                 <h2>{{ auth()->user()->name }}</h2>
-                <h3>Mamber</h3>
+                <h3>Other</h3>
             </div>
         </div>
         <!-- /menu profile quick info -->
@@ -39,7 +40,7 @@
             <div class="menu_section">
                 <ul class="nav side-menu">
                     <li>
-                        <a href="{{ route('patient.dashboard') }}">
+                        <a href="{{ route('member.dashboard') }}">
                             <i class="fa fa-home" aria-hidden="true"></i>
                             Home
                         </a>
@@ -49,59 +50,55 @@
             <div class="menu_section">
                 <h3>Management</h3>
 
-                @php ($emp = '')
+                @php ($IN = '')
                 @php ($app = '')
                 @php ($stor = '') 
                 @php ($qf = '') 
+                @php ($emp = '') 
+                @php ($inver = '') 
                 
-                @if(!empty($employee))
-                    @php ($emp = $employee->id)
+
+                @if(!empty($Member))
+                    @php ($emp = $Member->id)
                 @endif
-                @if(!empty($appointment))
-                    @php ($app = $appointment->id)
+                @if(!empty($inverty))
+                @php ($inver = $inverty->id)
+                @endif
+                @if(!empty($delivery))
+                    @php ($IN = $delivery->id)
+                @endif
+                @if(!empty($Delivery))
+                    @php ($app = $Delivery->id)
                 @endif
                 @if(!empty($stores))
                     @php ($stor = $stores->id)
                 @endif
+                @if(!empty($questionsforum))
+                    @if(!empty($questionsforum->id))
+                        @php ($qf =  $questionsforum->id)
+                    @endif
+                @endif 
+
 
                 <ul class="nav side-menu">
                     <li class="@if (Request::is('member/member') || Request::is('member/member/edit/'.$id) || Request::is('member/member/edit/editmember')) active @endif">
-                        <a href="{{ route('patient.member') }}">
+                        <a href="{{ route('member.member') }}">
                             <i class="fas fa-id-badge" aria-hidden="true"></i>
                             {{ "Member" }}
                         </a>
                     </li>
-                    <li class="@if (Request::is('member/online_book')||Request::is('member/searchonlinelibrary')|| Request::is('member/online_book/'.$id)) active @endif">
-                        <a href="{{ route('patient.online_book') }}">
-                            <i class="fas fa-file-pdf-o" aria-hidden="true"></i>
-                            {{ "Online book" }}
+                    <li class="@if (Request::is('member/inverty/add') ||Request::is('member/inverty')||Request::is('member/searchInverty')||Request::is('member/inverty')||Request::is('admin/inverty/edit/'.$inver)||Request::is('member/inverty/'.$inver)) active @endif">
+                        <a href="{{ route('member.inverty') }}">
+                            <i class="fas fa-object-group" aria-hidden="true"></i>
+                            {{ "Inverty " }}
                         </a>
                     </li>
-                    <li class="@if (Request::is('member/book') || Request::is('member/searchBook')  || Request::is('member/book/'.$id)) active @endif">
-                        <a href="{{ route('patient.book') }}">
-                            <i class="fas fa-book" aria-hidden="true"></i>
-                            {{ "Book" }}
+                    <li class="@if (Request::is('member/delivery') || Request::is('member/delivery/add')|| Request::is('member/delivery/add?')|| Request::is('member/delivery/add/'.$IN)|| Request::is('member/searchdelivery')|| Request::is('member/delivery/today')|| Request::is('member/delivery/'.$app)) ) active @endif">
+                        <a href="{{ route('member.delivery') }}">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                            {{ "Delivery" }}
                         </a>
                     </li>
-                    <li  class="@if (Request::is('member/book_issue') ||Request::is('member/Msearchbookissue') || Request::is('member/book_issue/'.$id)) active @endif">
-                        <a href="{{ route('patient.book_issue') }}">
-                            <i class="fas fa-book-reader " aria-hidden="true"></i>
-                            {{ "Book issue" }}
-                        </a>
-                    </li>
-                    <li class="@if (Request::is('member/fine_collection')||Request::is('member/Msearchfine')) active @endif">
-                        <a href="{{ route('patient.fine_collection') }}">
-                            <i class="fas fa-money" aria-hidden="true"></i>
-                            {{ "Fine collection" }}
-                        </a>
-                    </li>
-                    <li class="@if (Request::is('member/author') || Request::is('member/authorsearchauthor')) active @endif">
-                        <a href="{{ route('patient.author') }}">
-                            <i class="fas fa-pen-nib" aria-hidden="true"></i>
-                            {{ "Author" }}
-                        </a>
-                    </li>
-                   
                 </ul>
             </div>
         </div>

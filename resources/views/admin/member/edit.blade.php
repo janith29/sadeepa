@@ -38,7 +38,7 @@
             
                 <input type="hidden" id="id" name="id" value="{{ $Member->id }}">
                 <a href="{{ route('admin.member') }}" class="btn btn-danger">Cancel</a>
-                <a href="{{ route('admin.book.edit',[$Member->id])}}" class="btn btn-danger">Clear</a>
+                <a href="{{ route('admin.member.edit',[$Member->id])}}" class="btn btn-danger">Clear</a>
             
             <button type="submit" class="btn btn-primary">Edit</button>
 

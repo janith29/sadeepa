@@ -38,8 +38,8 @@
             
                 <input type="hidden" id="id" name="id" value="{{ $Member->id }}">
                 <input type="hidden" id="email" name="email" value="{{ $Member->email }}">
-                <a href="{{ route('patient.member') }}" class="btn btn-danger">Cancel</a>
-                <a href="{{ route('patient.member.edit',[$Member->id])}}" class="btn btn-danger">Clear</a>
+                <a href="{{ route('member.member') }}" class="btn btn-danger">Cancel</a>
+                <a href="{{ route('member.member.edit',[$Member->id])}}" class="btn btn-danger">Clear</a>
             
             <button type="submit" class="btn btn-primary">Edit</button>
 

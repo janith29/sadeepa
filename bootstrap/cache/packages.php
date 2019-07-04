@@ -65,6 +65,17 @@
       'Gravatar' => 'Creativeorange\\Gravatar\\Facades\\Gravatar',
     ),
   ),
+  'elibyy/tcpdf-laravel' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Elibyy\\TCPDF\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'PDF' => 'Elibyy\\TCPDF\\Facades\\TCPDF',
+    ),
+  ),
   'fideloper/proxy' => 
   array (
     'providers' => 

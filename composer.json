@@ -21,6 +21,7 @@
         "barryvdh/laravel-snappy": "^0.4.3",
         "creativeorange/gravatar": "~1.0",
         "davejamesmiller/laravel-breadcrumbs": "^3.0",
+        "elibyy/tcpdf-laravel": "^5.5",
         "fideloper/proxy": "^4.0",
         "fx3costa/laravelchartjs": "^2.5",
         "h4cc/wkhtmltoimage-i386": "0.12.x",
@@ -86,5 +87,13 @@
         "sort-packages": true,
         "optimize-autoloader": true
     },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/dusk"
+            ]
+        }
+    },
     "prefer-stable": true
+    
 }
